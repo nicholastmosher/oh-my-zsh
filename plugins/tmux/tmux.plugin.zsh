@@ -15,12 +15,12 @@ if which tmux &> /dev/null
 	# Configuration variables
 	#
 	# Automatically start tmux
-	[[ -n "$ZSH_TMUX_AUTOSTART" ]] || ZSH_TMUX_AUTOSTART=false
+	[[ -n "$ZSH_TMUX_AUTOSTART" ]] || ZSH_TMUX_AUTOSTART=true
 	# Only autostart once. If set to false, tmux will attempt to
 	# autostart every time your zsh configs are reloaded.
 	[[ -n "$ZSH_TMUX_AUTOSTART_ONCE" ]] || ZSH_TMUX_AUTOSTART_ONCE=true
 	# Automatically connect to a previous session if it exists
-	[[ -n "$ZSH_TMUX_AUTOCONNECT" ]] || ZSH_TMUX_AUTOCONNECT=true
+	[[ -n "$ZSH_TMUX_AUTOCONNECT" ]] || ZSH_TMUX_AUTOCONNECT=false
 	# Automatically close the terminal when tmux exits
 	[[ -n "$ZSH_TMUX_AUTOQUIT" ]] || ZSH_TMUX_AUTOQUIT=$ZSH_TMUX_AUTOSTART
 	# Set term to screen or screen-256color based on current terminal support
