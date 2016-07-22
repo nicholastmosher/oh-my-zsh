@@ -187,7 +187,12 @@ prompt_hg() {
 
 # Dir: current working directory
 prompt_dir() {
-  prompt_segment blue black '%~'
+  prompt_segment blue black $(pwd | perl -pe '
+   BEGIN {
+      binmode STDIN,  ":encoding(UTF-8)";
+      binmode STDOUT, ":encoding(UTF-8)";
+   }; s|^$ENV{HOME}|~|g; s|/([^/.])[^/]*(?=/)|/$1|g; s|/\.([^/])[^/]*(?=/)|/.$1|g
+')
 }
 
 # Virtualenv: current working virtualenv
@@ -215,13 +220,11 @@ prompt_status() {
 ## Main prompt
 build_prompt() {
   RETVAL=$?
-  prompt_status
+#  prompt_status
   prompt_virtualenv
   prompt_context
   prompt_dir
   prompt_git
-  prompt_bzr
-  prompt_hg
   prompt_end
 }
 
